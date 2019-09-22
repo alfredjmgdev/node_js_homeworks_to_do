@@ -25,4 +25,5 @@ switch (comando) {
     default:
         console.log('Comando no reconocido');
         break;
+        // comentario
 }
