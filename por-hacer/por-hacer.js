@@ -45,6 +45,63 @@ const crear = (descripcion) => {
     return porHacer
 }
 
+const getListado = (descripcion) => {
+
+    cargarDB();
+    return listadoPorHacer;
+
+}
+
+const actualizar = (descripcion, completado = true) => {
+
+    cargarDB();
+    
+    // let index =listadoPorHacer.findIndex( tarea => {
+    //     return tarea.descripcion === descripcion;
+    // })
+
+    let index =listadoPorHacer.findIndex( tarea => tarea.descripcion === descripcion);
+
+    if(index >= 0) {
+        listadoPorHacer[index].completado = completado;
+        guardarDB();
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+const borrar = (descripcion) => {
+
+    cargarDB();
+    // let index =listadoPorHacer.findIndex( tarea => tarea.descripcion === descripcion);
+    let nuevoListado = listadoPorHacer.filter( tarea  => {
+        return tarea.descripcion !== descripcion
+    });
+
+    console.log(nuevoListado);
+
+    if( listadoPorHacer.length === nuevoListado.length ) {
+        return false
+    }else{
+        listadoPorHacer = nuevoListado;
+        guardarDB();
+    }
+
+    // if(index) {
+    //     // delete listadoPorHacer[index];
+    //     console.log(listadoPorHacer);
+    //     return true;
+    // }else{
+    //     return false;
+    // }
+
+}
+
 module.exports = {
-    crear
+    crear,
+    getListado,
+    actualizar,
+    borrar
 }

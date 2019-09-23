@@ -6,7 +6,7 @@ let argv = require('yargs')
             desc: 'Descripcion de la tarea por hacer'
         }
     })
-    .command('Actualizar', 'Actualiza el estado completado de una tarea', {
+    .command('actualizar', 'Actualiza el estado completado de una tarea', {
         descripcion: {
             demand: true,
             alias: 'd',
@@ -16,6 +16,13 @@ let argv = require('yargs')
             default: true,
             alias: 'c',
             desc: 'Marca como completado o pendiente la tarea'
+        }
+    })
+    .command('borrar', 'Borra una tarea', {
+        descripcion: {
+            demand: true,
+            alias: 'd',
+            desc: 'Descripcion de la tarea por hacer'
         }
     })
     .help()
